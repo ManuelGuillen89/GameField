@@ -1,0 +1,88 @@
+input AggregateCommandInfo {
+	id: String!
+	version: Int!
+}
+
+input ChangeGameFieldMinMaxPlayers {
+	__aggregateCommandInfo: AggregateCommandInfo!
+	minPlayers: Int!
+	maxPlayers: Int!
+}
+
+input ChangeGameFieldName {
+	__aggregateCommandInfo: AggregateCommandInfo!
+	name: String!
+}
+
+input ChangeGameFieldStatus {
+	__aggregateCommandInfo: AggregateCommandInfo!
+	status: GameFieldStatus!
+}
+
+input ChangeGameFieldType {
+	__aggregateCommandInfo: AggregateCommandInfo!
+	fieldType: GameFieldType!
+}
+
+enum CommandName {
+	CreateGameField
+	ChangeGameFieldMinMaxPlayers
+	ChangeGameFieldName
+	ChangeGameFieldStatus
+}
+
+enum CommandStatus {
+	VALID
+	INVALID
+}
+
+type CommandValidatorResponse {
+	message: String!
+	status: CommandStatus!
+	validationError: String
+	pushedCommandInfo: String
+}
+
+input CreateGameField {
+	__commandName: CommandName
+	id: String!
+	fieldName: String!
+	fieldType: GameFieldType!
+	minPlayers: Int!
+	maxPlayers: Int!
+	status: GameFieldStatus!
+}
+
+type GameField {
+	id: ID!
+	version: Int
+	name: String!
+	fieldType: GameFieldType!
+	maxPlayers: Int!
+	minPlayers: Int!
+	status: GameFieldStatus!
+}
+
+enum GameFieldStatus {
+	DISABLED
+	ENABLED
+	DELETED
+}
+
+enum GameFieldType {
+	FOOTBALL
+	TENNIS
+	BASKETBALL
+}
+
+type Mutation {
+	createGameField(input: CreateGameField!): CommandValidatorResponse!
+	changeGameFieldName(input: ChangeGameFieldName!): CommandValidatorResponse!
+	changeGameFieldType(input: ChangeGameFieldType!): CommandValidatorResponse!
+	changeGameFieldStatus(input: ChangeGameFieldStatus!): CommandValidatorResponse!
+	changeGameFieldMinMaxPlayers(input: ChangeGameFieldMinMaxPlayers!): CommandValidatorResponse!
+}
+
+type Query {
+	getGameField(id: ID!): GameField
+}
