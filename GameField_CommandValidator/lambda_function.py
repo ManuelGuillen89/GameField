@@ -1,5 +1,7 @@
-import json, uuid, boto3
 from commands_and__events_schema import *
+import json, uuid, boto3
+from typing import Union
+from pydantic import ValidationError
 
 def lambda_handler(event, context):
     #check if the payload is in
@@ -40,7 +42,7 @@ def parse_command(event) -> Union[Optional[Command], Optional[str]]:
     if (commandName == None or payload == None):
         return None, None
     elif (commandName not in list(CommandName)):
-            return None, None
+        return None, None
     parsedCommand = None
     errorAsJson = None
     try:

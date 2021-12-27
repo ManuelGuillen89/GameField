@@ -1,5 +1,5 @@
-from pydantic import BaseModel, ValidationError
-from typing import Union, Optional
+from pydantic import BaseModel
+from typing import Optional
 from enum import Enum
 
 ##################### COMMON ENUMS AND TYPES ############################
@@ -42,7 +42,7 @@ class CommandValidatorResponse(BaseModel):
     pushedCommandInfo: Optional[str]
 
 class CreateGameField(Command):
-    __commandName: CommandName = CommandName.CreateGameField
+    commandName: CommandName = CommandName.CreateGameField
     id: str
     fieldName: str
     fieldType: GameFieldType
@@ -59,7 +59,7 @@ class AggregateEventInfo(BaseModel):
     seqNumber: int
 
 class GameFieldCreated(Event):
-    __eventName: EventName = EventName.GameFieldCreated
+    eventName: EventName = EventName.GameFieldCreated
     fieldName: str
     fieldType: GameFieldType
     minPlayers: int
@@ -73,4 +73,5 @@ def get_command_payload_if_exist(event) -> Optional[dict]:
     return event['arguments']['payload'] if 'payload' in event['arguments'] else None
 
 def get_command_name_if_exist(event) -> Optional[dict]:
-    return event['arguments']['__commandName'] if '__commandName' in event['arguments'] else None
+    return event['arguments']['commandName'] if 'commandName' in event['arguments'] else None
+
