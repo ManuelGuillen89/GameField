@@ -3,32 +3,8 @@ input AggregateCommandInfo {
 	version: Int!
 }
 
-input ChangeGameFieldMinMaxPlayers {
-	__aggregateCommandInfo: AggregateCommandInfo!
-	minPlayers: Int!
-	maxPlayers: Int!
-}
-
-input ChangeGameFieldName {
-	__aggregateCommandInfo: AggregateCommandInfo!
-	name: String!
-}
-
-input ChangeGameFieldStatus {
-	__aggregateCommandInfo: AggregateCommandInfo!
-	status: GameFieldStatus!
-}
-
-input ChangeGameFieldType {
-	__aggregateCommandInfo: AggregateCommandInfo!
-	fieldType: GameFieldType!
-}
-
 enum CommandName {
 	CreateGameField
-	ChangeGameFieldMinMaxPlayers
-	ChangeGameFieldName
-	ChangeGameFieldStatus
 }
 
 enum CommandStatus {
@@ -39,12 +15,11 @@ enum CommandStatus {
 type CommandValidatorResponse {
 	message: String!
 	status: CommandStatus!
-	validationError: String
+	errorAsJson: String
 	pushedCommandInfo: String
 }
 
 input CreateGameField {
-	__commandName: CommandName
 	id: String!
 	fieldName: String!
 	fieldType: GameFieldType!
@@ -76,11 +51,7 @@ enum GameFieldType {
 }
 
 type Mutation {
-	createGameField(input: CreateGameField!): CommandValidatorResponse!
-	changeGameFieldName(input: ChangeGameFieldName!): CommandValidatorResponse!
-	changeGameFieldType(input: ChangeGameFieldType!): CommandValidatorResponse!
-	changeGameFieldStatus(input: ChangeGameFieldStatus!): CommandValidatorResponse!
-	changeGameFieldMinMaxPlayers(input: ChangeGameFieldMinMaxPlayers!): CommandValidatorResponse!
+	createGameField(__commandName: CommandName = "CreateGameField", payload: CreateGameField!): CommandValidatorResponse!
 }
 
 type Query {

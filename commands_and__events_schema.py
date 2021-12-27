@@ -38,7 +38,7 @@ class AggregateCommandInfo(BaseModel):
 class CommandValidatorResponse(BaseModel):
     message: str
     status: CommandStatus
-    validationError: Optional[str]
+    errorAsJson: Optional[str]
     pushedCommandInfo: Optional[str]
 
 class CreateGameField(Command):
@@ -66,33 +66,11 @@ class GameFieldCreated(Event):
     maxPlayers: int
     status: GameFieldStatus
     aggregateEventInfo: AggregateEventInfo
-    
-
-class GameFieldNameChanged(Event):
-    __eventName: EventName = EventName.GameFieldNameChanged
-    fieldName: str
-    eventCommonInfo: AggregateEventInfo
-    
-
-class GameFieldMinMaxPlayersChanged(Event):
-    __eventName: EventName = EventName.GameFieldMinMaxPlayersChanged
-    minPlayers: int
-    maxPlayers: int
-    eventCommonInfo: AggregateEventInfo
-
-class GameFieldTypeChanged(Event):
-    __eventName: EventName = EventName.GameFieldTypeChanged
-    fieldType: GameFieldType
-    eventCommonInfo: AggregateEventInfo
-    
-
-class GameFieldStatusChanged(Event):
-    __eventName: EventName = EventName.GameFieldStatusChanged
-    status: GameFieldStatus
-    eventCommonInfo: AggregateEventInfo
 
 
 ######################### COMMON UTILITY FUNCTIONS ############################
-def get_event_input_if_exist(event) -> Optional[dict]:
-    return event['arguments']['input']
+def get_command_payload_if_exist(event) -> Optional[dict]:
+    return event['arguments']['payload'] if 'payload' in event['arguments'] else None
 
+def get_command_name_if_exist(event) -> Optional[dict]:
+    return event['arguments']['__commandName'] if '__commandName' in event['arguments'] else None
