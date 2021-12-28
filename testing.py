@@ -1,4 +1,5 @@
 from gamefield_schema_layer import *
+from functools import reduce
 
 class UnsatisfiedPolicy(BaseModel):
     message: str
@@ -37,3 +38,15 @@ j = {
 y = AppliedPolicy(**j)
 
 print (y)
+
+tup = (2,1,0,2,2,0,0,2)
+print(reduce(lambda x, y: x+y, tup,6))
+
+commandNames = {
+    'CreateGameField',
+    'SomeCommand'
+}
+def aFunct(x):
+    x = 
+
+x = reduce(lambda x, y: aFunct(x), commandNames, [])

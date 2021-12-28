@@ -1,5 +1,6 @@
 from gamefield_schema_layer import *
 from typing import List, Union
+from functools import reduce
 
 class UnsatisfiedPolicy(BaseModel):
     message: str
@@ -22,7 +23,6 @@ class GameFieldPolicies():
 
 
 class PolicyProcessor():
-
     def __apply_policy(
         policy,  # (Command) -> Union[bool, Optional[UnsatisfiedPolicy]]
         command: Command,
