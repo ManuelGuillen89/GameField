@@ -1,4 +1,4 @@
-from commands_and__events_schema import *
+from gamefield_schema_layer import *
 
 class UnsatisfiedPolicy(BaseModel):
     message: str

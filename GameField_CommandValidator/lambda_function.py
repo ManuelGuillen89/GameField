@@ -1,4 +1,4 @@
-from commands_and__events_schema import *
+from gamefield_schema_layer import *
 import json, uuid, boto3
 from typing import Union
 from pydantic import ValidationError

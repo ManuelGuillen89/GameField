@@ -1,4 +1,4 @@
-from commands_and__events_schema import *
+from gamefield_schema_layer import *
 from typing import List, Union
 
 class UnsatisfiedPolicy(BaseModel):
@@ -20,33 +20,36 @@ class GameFieldPolicies():
         }
         return AppliedPolicy(**appliedPolicyPayload)
 
-def apply_policy(
-    policy,  # (Command) -> Union[bool, Optional[UnsatisfiedPolicy]]
-    command: Command,
-    appliedPolicies: List[AppliedPolicy],
-) -> List[AppliedPolicy]:
-    appliedPolicy = policy(command)
-    appliedPolicies.append(appliedPolicy)
-    return appliedPolicies
 
-def policies_for_CreateGameField_command(command: CreateGameField) -> Union[bool, Optional[List[UnsatisfiedPolicy]]]:
-    appliedPolicies = []
-    for policy in GameFieldPolicies._policies_list():
-        appliedPolices = apply_policy(getattr(GameFieldPolicies, policy), command, appliedPolicies)
-    isEverythingApproved = all(list(map(lambda x: x.isSatisfied, appliedPolices)))
-    if(isEverythingApproved):
-        return True, None
-    else:
-        unsatisfiedPolicies = list(map(lambda x: x.policyError, appliedPolices))
-        return False, unsatisfiedPolicies
+class PolicyProcessor():
 
-def apply_policies_by_command_type(command) -> Union[bool, Optional[List[UnsatisfiedPolicy]]]:
-    if(command.commandName == CommandName.CreateGameField):
-        return policies_for_CreateGameField_command(command)
-    elif(False): # TODO put other commands here
-        print("pass") 
-    print("pass")    
-    return False, None
+    def __apply_policy(
+        policy,  # (Command) -> Union[bool, Optional[UnsatisfiedPolicy]]
+        command: Command,
+        appliedPolicies: List[AppliedPolicy],
+    ) -> List[AppliedPolicy]:
+        appliedPolicy = policy(command)
+        appliedPolicies.append(appliedPolicy)
+        return appliedPolicies
+
+    def __applied_policies_for_command(command: Command, policiesNamesList: List[str]) -> Union[bool, Optional[List[UnsatisfiedPolicy]]]:
+        appliedPolicies = []
+        for policy in policiesNamesList:
+            appliedPolices = PolicyProcessor.__apply_policy(getattr(GameFieldPolicies, policy), command, appliedPolicies)
+        isEverythingApproved = all(list(map(lambda x: x.isSatisfied, appliedPolices)))
+        if(isEverythingApproved):
+            return True, None
+        else:
+            unsatisfiedPolicies = list(map(lambda x: x.policyError, appliedPolices))
+            return False, unsatisfiedPolicies
+
+    def apply_policies_by_command_type(command) -> Union[bool, Optional[List[UnsatisfiedPolicy]]]:
+        if(command.commandName == CommandName.CreateGameField):
+            return PolicyProcessor.__applied_policies_for_command(command, GameFieldPolicies._policies_list())
+        elif(False): # TODO put other commands here
+            print("pass") 
+        print("pass")    
+        return False, None
 
 
 jsonCommand = {
@@ -61,7 +64,7 @@ jsonCommand = {
 
 command = CreateGameField(**jsonCommand)
 print(command)
-(bool1, list1) = apply_policies_by_command_type(command) 
+(bool1, list1) = PolicyProcessor.apply_policies_by_command_type(command) 
 
 print(bool1)
 print(list1)
