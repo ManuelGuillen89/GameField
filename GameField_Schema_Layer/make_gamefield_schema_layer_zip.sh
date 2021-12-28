@@ -1,1 +1,0 @@
-echo "STARTED!" & cp ../gamefield_schema_layer.py ./python & zip -r gamefield_schema_layer.zip ./python & echo "DONE!"
