@@ -41,12 +41,3 @@ print (y)
 
 tup = (2,1,0,2,2,0,0,2)
 print(reduce(lambda x, y: x+y, tup,6))
-
-commandNames = {
-    'CreateGameField',
-    'SomeCommand'
-}
-def aFunct(x):
-    x = 
-
-x = reduce(lambda x, y: aFunct(x), commandNames, [])
