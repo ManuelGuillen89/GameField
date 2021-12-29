@@ -9,7 +9,6 @@ def lambda_handler(event, context):
     for record in event['Records']:
         payload = json.loads(record["body"])
         parsedCommand = parse_validated_command(payload)
-        print(parsedCommand)
         if (parsedCommand == None):
             print(">>>>>>>>>>>>>>>>>>> COMMAND NOT PARSED, EXITING.-")
             #TODO: rise and publish error
@@ -20,7 +19,7 @@ def lambda_handler(event, context):
 
 def parse_validated_command(payload) -> Optional[Command]:
     cmdName = payload['commandName']
-    listOfCommands = list(CommandName)
+    listOfCommands = list(EnabledCommand)
     for name in listOfCommands:
         if (name == cmdName):
             commandClass = getattr(sys.modules[__name__], name)

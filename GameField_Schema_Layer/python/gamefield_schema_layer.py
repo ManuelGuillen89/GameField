@@ -3,10 +3,10 @@ from typing import Optional
 from enum import Enum
 
 ##################### COMMON ENUMS AND TYPES ############################
-class CommandName(str, Enum):
+class EnabledCommand(str, Enum):
     CreateGameField = "CreateGameField"
 
-class EventName(str, Enum):
+class EnabledEvent(str, Enum):
     GameFieldCreated = "GameFieldCreated"
     GameFieldNameChanged = "GameFieldNameChanged"
     GameFieldMinMaxPlayersChanged = "GameFieldMinMaxPlayersChanged"
@@ -42,7 +42,7 @@ class CommandValidatorResponse(BaseModel):
     pushedCommandInfo: Optional[str]
 
 class CreateGameField(Command):
-    commandName: CommandName = CommandName.CreateGameField
+    commandName: EnabledCommand = EnabledCommand.CreateGameField
     id: str
     fieldName: str
     fieldType: GameFieldType
@@ -59,7 +59,7 @@ class AggregateEventInfo(BaseModel):
     seqNumber: int
 
 class GameFieldCreated(Event):
-    eventName: EventName = EventName.GameFieldCreated
+    eventName: EnabledEvent = EnabledEvent.GameFieldCreated
     fieldName: str
     fieldType: GameFieldType
     minPlayers: int

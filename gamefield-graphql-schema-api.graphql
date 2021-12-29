@@ -3,7 +3,7 @@ input AggregateCommandInfo {
 	version: Int!
 }
 
-enum CommandName {
+enum EnabledCommand {
 	CreateGameField
 }
 
@@ -51,7 +51,7 @@ enum GameFieldType {
 }
 
 type Mutation {
-	createGameField(__commandName: CommandName = "CreateGameField", payload: CreateGameField!): CommandValidatorResponse!
+	createGameField(__commandName: EnabledCommand = "CreateGameField", payload: CreateGameField!): CommandValidatorResponse!
 }
 
 type Query {

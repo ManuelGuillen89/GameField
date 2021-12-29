@@ -41,12 +41,12 @@ def parse_command(event) -> Union[Optional[Command], Optional[str]]:
     commandName = get_command_name_from_graphql_mutation_if_exist(event)
     if (commandName == None or payload == None):
         return None, None
-    elif (commandName not in list(CommandName)):
+    elif (commandName not in list(EnabledCommand)):
         return None, None
     parsedCommand = None
     errorAsJson = None
     try:
-        listOfCommands = list(CommandName)
+        listOfCommands = list(EnabledCommand)
         for name in listOfCommands:
             if (name == commandName):
                 commandClass = getattr(sys.modules[__name__], name)
