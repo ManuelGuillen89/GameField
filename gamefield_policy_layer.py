@@ -14,8 +14,8 @@ class AppliedPolicy(BaseModel):
     policyError: Optional[UnsatisfiedPolicy]
 
 class PoliciesContainer:
-    def _policies_list(): 
-        return [method for method in dir(CreateGameFieldPolicies) if method.startswith('_') is False]
+    def _policies_list(self): 
+        return [method for method in dir(self) if method.startswith('_') is False]
 
 class CreateGameFieldPolicies(PoliciesContainer):
     def dummy_policy(command: Command) -> AppliedPolicy:
@@ -53,6 +53,6 @@ class PolicyProcessor():
         for name in listOfCommands:
             if (name == command.commandName): #TODO insecure code here.. well 
                 policiesClass = getattr(sys.modules[__name__], "{}Policies".format(name))
-                return PolicyProcessor.__applied_policies_for_command(command, policiesClass._policies_list())
+                return PolicyProcessor.__applied_policies_for_command(command, policiesClass._policies_list(policiesClass))
         print("pass")  
         return False, None
