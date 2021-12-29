@@ -38,7 +38,7 @@ def lambda_handler(event, context):
 
 def parse_command(event) -> Union[Optional[Command], Optional[str]]:
     payload = get_command_payload_if_exist(event)
-    commandName = get_command_name_if_exist(event)
+    commandName = get_command_name_from_graphql_mutation_if_exist(event)
     if (commandName == None or payload == None):
         return None, None
     elif (commandName not in list(CommandName)):

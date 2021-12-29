@@ -7,6 +7,7 @@ class PoliciesEnabled(str, Enum):
     CreateGameFieldPolicies = "CreateGameFieldPolicies"
 
 class UnsatisfiedPolicy(BaseModel):
+    commandName: str
     message: str
 
 class AppliedPolicy(BaseModel):
@@ -19,7 +20,10 @@ class PoliciesContainer:
 
 class CreateGameFieldPolicies(PoliciesContainer):
     def dummy_policy(command: Command) -> AppliedPolicy:
-        unsatisfiedPolicie = UnsatisfiedPolicy(**{"message":"Dummy Error Okay"})
+        unsatisfiedPolicie = UnsatisfiedPolicy(**{
+            "message":"Dummy Error Okay",
+            "commandName": command.commandName
+            })
         appliedPolicyPayload = {
             'isSatisfied': False,
             'policyError': unsatisfiedPolicie

@@ -1,0 +1,31 @@
+{
+    "Records": [
+        {
+            "messageId": "83c1d23a-e63e-4e10-bab0-9d0142cf6ca7",
+            "receiptHandle": "AQEBl2Zo1291cpJ1bMS/eugeoT/7SIexAgQHgEPu3U9U+j3io77i6+f5axd5hXxwhK4PIJDW70o2H4MBAvGI/CHdTHjgWmnYLjmreslcYyvMw6BZVRKYT9KwU9JYqY0YJd/WAiNWljaoZz0ew/mJgKYsLvmAsybtAchdaRMbr8tzYR4TfPVFpjp3551xSIG93+kEIxJUPawg19NIjxZpeMb1VSc8JDbCSAOLVGTsbALwwQZ5dQDNICxthdSBcap+WDvk6RylUcIHvEayLEtwbvjRajF2rT2PshCd6sL/c04cTJolkkUbGZQnIL9qTfNYienG",
+            "body": {
+                "commandName": "CreateGameField",
+                "id": "1a1a",
+                "fieldName": "Football field 1",
+                "fieldType": "FOOTBALL",
+                "minPlayers": 10,
+                "maxPlayers": 10,
+                "status": "DISABLED"
+            },
+            "attributes": {
+                "ApproximateReceiveCount": "1",
+                "SentTimestamp": "1640785765407",
+                "SequenceNumber": "18866785229653743616",
+                "MessageGroupId": "1a1a",
+                "SenderId": "AROASSKHQGHUSJX7IVJ3I:GameField_CommandValidator",
+                "MessageDeduplicationId": "d592241010226763861e38edbd03dc5c99852b3e24ae5760a5cde6239f66b426",
+                "ApproximateFirstReceiveTimestamp": "1640785765407"
+            },
+            "messageAttributes": {},
+            "md5OfBody": "e11d8ef7a97cd53b2854ae16a18b57ca",
+            "eventSource": "aws:sqs",
+            "eventSourceARN": "arn:aws:sqs:sa-east-1:176780489193:GameField_CommandHandler_Queue.fifo",
+            "awsRegion": "sa-east-1"
+        }
+    ]
+}

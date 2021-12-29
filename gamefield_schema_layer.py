@@ -72,6 +72,6 @@ class GameFieldCreated(Event):
 def get_command_payload_if_exist(event) -> Optional[dict]:
     return event['arguments']['payload'] if 'payload' in event['arguments'] else None
 
-def get_command_name_if_exist(event) -> Optional[dict]:
-    return event['arguments']['commandName'] if 'commandName' in event['arguments'] else None
+def get_command_name_from_graphql_mutation_if_exist(event) -> Optional[dict]:
+    return event['arguments']['__commandName'] if '__commandName' in event['arguments'] else None
 
