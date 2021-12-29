@@ -1,5 +1,5 @@
 from gamefield_schema_layer import *
-import json, uuid, boto3
+import json, uuid, boto3, sys
 from typing import Union
 from pydantic import ValidationError
 
@@ -46,13 +46,14 @@ def parse_command(event) -> Union[Optional[Command], Optional[str]]:
     parsedCommand = None
     errorAsJson = None
     try:
-        if(commandName == CommandName.CreateGameField.name):
-            parsedCommand = CreateGameField(**payload)
-            #TODO: Enable this...
-            #if(not is_valid_uuid(parsedCommand.id)):
-            #    raise ValueError("INVALID UUID")
-        elif(False):#TODO: agregar los otros comandos aquí
-            pass
+        listOfCommands = list(CommandName)
+        for name in listOfCommands:
+            if (name == commandName):
+                commandClass = getattr(sys.modules[__name__], name)
+                parsedCommand = commandClass(**payload)
+#TODO: Enable this...
+        #if(not is_valid_uuid(parsedCommand.id)):
+        #    raise ValueError("INVALID UUID")
     except ValidationError as e:
         print(e.json())
         errorAsJson = e.json()

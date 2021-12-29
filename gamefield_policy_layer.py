@@ -1,6 +1,10 @@
 from gamefield_schema_layer import *
 from typing import List, Union
 from functools import reduce
+import sys
+
+class PoliciesEnabled(str, Enum):
+    CreateGameFieldPolicies = "CreateGameFieldPolicies"
 
 class UnsatisfiedPolicy(BaseModel):
     message: str
@@ -9,10 +13,11 @@ class AppliedPolicy(BaseModel):
     isSatisfied: bool
     policyError: Optional[UnsatisfiedPolicy]
 
-class GameFieldPolicies():
+class PoliciesContainer:
     def _policies_list(): 
-        return [method for method in dir(GameFieldPolicies) if method.startswith('_') is False]
+        return [method for method in dir(CreateGameFieldPolicies) if method.startswith('_') is False]
 
+class CreateGameFieldPolicies(PoliciesContainer):
     def dummy_policy(command: Command) -> AppliedPolicy:
         unsatisfiedPolicie = UnsatisfiedPolicy(**{"message":"Dummy Error Okay"})
         appliedPolicyPayload = {
@@ -35,7 +40,7 @@ class PolicyProcessor():
     def __applied_policies_for_command(command: Command, policiesNamesList: List[str]) -> Union[bool, Optional[List[UnsatisfiedPolicy]]]:
         appliedPolicies = []
         for policy in policiesNamesList:
-            appliedPolices = PolicyProcessor.__apply_policy(getattr(GameFieldPolicies, policy), command, appliedPolicies)
+            appliedPolices = PolicyProcessor.__apply_policy(getattr(CreateGameFieldPolicies, policy), command, appliedPolicies)
         isEverythingApproved = all(list(map(lambda x: x.isSatisfied, appliedPolices)))
         if(isEverythingApproved):
             return True, None
@@ -43,10 +48,11 @@ class PolicyProcessor():
             unsatisfiedPolicies = list(map(lambda x: x.policyError, appliedPolices))
             return False, unsatisfiedPolicies
 
-    def apply_policies_by_command_type(command) -> Union[bool, Optional[List[UnsatisfiedPolicy]]]:
-        if(command.commandName == CommandName.CreateGameField):
-            return PolicyProcessor.__applied_policies_for_command(command, GameFieldPolicies._policies_list())
-        elif(False): # TODO put other GameField commands here
-            print("pass") 
-        print("pass")    
+    def apply_policies_by_command_type(command: Command) -> Union[bool, Optional[List[UnsatisfiedPolicy]]]:
+        listOfCommands = list(CommandName)
+        for name in listOfCommands:
+            if (name == command.commandName): #TODO insecure code here.. well 
+                policiesClass = getattr(sys.modules[__name__], "{}Policies".format(name))
+                return PolicyProcessor.__applied_policies_for_command(command, policiesClass._policies_list())
+        print("pass")  
         return False, None
