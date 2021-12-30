@@ -1,0 +1,8 @@
+[
+  {
+    "Arn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Policy_Python:7"
+  },
+  {
+    "Arn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_PoliciesForCommand_Python:3"
+  }
+]
