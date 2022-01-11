@@ -33,7 +33,7 @@ class PoliciesContainer:
 
 class CreateGameFieldPolicies(PoliciesContainer):
     def dummy_policy(command: Command) -> AppliedPolicy:
-        return GameFieldPolicies.a_dummy_policy(command)
+        return GameFieldPolicies.true_test_policy(command)
 
 
 # TODO: PUT HERE THE EVALUATION FOR EVERY POLICY
@@ -45,4 +45,8 @@ class GameFieldPolicies:
             **{"message": "Dummy Error Okay", "commandName": command.commandName}
         )
         appliedPolicyPayload = {"isSatisfied": False, "policyError": unsatisfiedPolicie}
+        return AppliedPolicy(**appliedPolicyPayload)
+    
+    def true_test_policy(command: Command):
+        appliedPolicyPayload = {"isSatisfied": True, "policyError": None}
         return AppliedPolicy(**appliedPolicyPayload)
