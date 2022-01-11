@@ -1,12 +1,9 @@
 from gamefield_schema_layer import *
 from typing import List, Union
-from functools import reduce
 import sys
 
-
-class EnabledPolicies(str, Enum):
-    CreateGameFieldPolicies = "CreateGameFieldPolicies"
-
+##########################################################################################
+######################## DEFINITIONS AND CONTROLLERS #####################################
 
 class UnsatisfiedPolicy(BaseModel):
     commandName: str
@@ -16,6 +13,14 @@ class UnsatisfiedPolicy(BaseModel):
 class AppliedPolicy(BaseModel):
     isSatisfied: bool
     policyError: Optional[UnsatisfiedPolicy]
+
+
+class PoliciesContainer:
+    def _policies_list(self):
+        return [method for method in dir(self) if method.startswith('_') is False]
+
+    def policies_class_by_command_name(commandName):
+        return getattr(sys.modules[__name__], "{}Policies".format(commandName))
 
 
 class PolicyProcessor():
@@ -47,15 +52,34 @@ class PolicyProcessor():
         listOfCommands = list(EnabledCommand)
         for name in listOfCommands:
             if (name == command.commandName):  # TODO insecure code here.. well, everywhere
-                policiesClass = getattr(sys.modules[__name__], "{}Policies".format(name))
+                policiesClass = getattr(
+                    sys.modules[__name__], "{}Policies".format(name))
                 if(policiesClass == None):
-                    print("ERROR: Policies not registered for this command: {}".format(command.commandName))
+                    print("ERROR: Policies not registered for this command: {}".format(
+                        command.commandName))
                     return False, [UnsatisfiedPolicy(**{
                         "message": "ERROR: Policies not registered for this command",
                         "commandName": command.commandName
                     })]
                 return PolicyProcessor.__applied_policies_for_command(command, policiesClass._policies_list(policiesClass))
-        print("ERROR: Policies not processed for command: {}".format(command.commandName))
+        print("ERROR: Policies not processed for command: {}".format(
+            command.commandName))
         return False, None
 
+######################## END OF DEFINITIONS AND CONTROLLERS BLOCK ######################################
+########################################################################################################
 
+####################### POLICIES EVALUETION CLASES #####################################################
+# TODO: PUT HERE THE POLICIES FOR EVERY ENABLED COMMAND
+
+class CreateGameFieldPolicies(PoliciesContainer):
+    def dummy_policy(command: Command) -> AppliedPolicy:
+        unsatisfiedPolicie = UnsatisfiedPolicy(**{
+            "message": "Dummy Error Okay",
+            "commandName": command.commandName
+        })
+        appliedPolicyPayload = {
+            'isSatisfied': False,
+            'policyError': unsatisfiedPolicie
+        }
+        return AppliedPolicy(**appliedPolicyPayload)

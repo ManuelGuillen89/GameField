@@ -1,4 +1,12 @@
-from gamefield_policy_layer import *
+from gamefield_schema_layer import Command
+from typing import Optional
+from pydantic import BaseModel
+import sys
+
+##########################################################################################
+######################## DONT TOUCH THIS BLOCK ###########################################
+def get_policy_evaluation_class(name):
+    return getattr(sys.modules[__name__], "{}Policies".format(name)) 
 
 class PoliciesContainer:
     def _policies_list(self):
@@ -7,7 +15,18 @@ class PoliciesContainer:
     def policies_class_by_command_name(commandName):
         return getattr(sys.modules[__name__], "{}Policies".format(commandName))
 
+class UnsatisfiedPolicy(BaseModel):
+    commandName: str
+    message: str
 
+
+class AppliedPolicy(BaseModel):
+    isSatisfied: bool
+    policyError: Optional[UnsatisfiedPolicy]
+######################## END OF STATIC THE BLOCK #######################################
+########################################################################################
+
+###################### POLICIES EVALUETION CLASES ######################################
 #TODO: PUT HERE THE POLICIES FOR EVERY ENABLED COMMAND
 
 class CreateGameFieldPolicies(PoliciesContainer):
@@ -21,3 +40,7 @@ class CreateGameFieldPolicies(PoliciesContainer):
             'policyError': unsatisfiedPolicie
         }
         return AppliedPolicy(**appliedPolicyPayload)
+
+
+
+
