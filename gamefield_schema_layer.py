@@ -4,13 +4,19 @@ from enum import Enum
 import uuid
 
 ##################### COMMON ENUMS AND TYPES ############################
-COMMAND_EVENT_MAPPER = {
-    "CreateGameField": "GameFieldCreated"
-}
+
 
 class EnabledCommand(str, Enum):
     CreateGameField = "CreateGameField"
- 
+
+class EnabledEvent(str, Enum):
+    GameFieldCreated = "GameFieldCreated"
+
+
+COMMAND_EVENT_MAPPER = {
+    EnabledCommand.CreateGameField.value: EnabledEvent.GameFieldCreated.value
+}
+
 class GameFieldStatus(str, Enum):
     DISABLED = "DISABLED"
     ENABLED = "ENABLED"
@@ -59,7 +65,7 @@ class AggregateEventInfo(BaseModel):
     seqNumber: int
 
 class GameFieldCreated(Event):
-    eventName: EnabledEventMapper = EnabledEventMapper.GameFieldCreated
+    eventName: EnabledEvent = EnabledEvent.GameFieldCreated
     fieldName: str
     fieldType: GameFieldType
     minPlayers: int
