@@ -30,17 +30,16 @@ def process_validated_command(command: Command):
     (isEverythingApproved, unsatisfiedPolicies) = PolicyProcessor.apply_policies_by_command_type(command)
     if (isEverythingApproved):
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>> EverythingApproved")
-        
-        for eventType in COMMAND_EVENT_MAPPER:
-            if (eventType.key == command.eventName):
-                #TODO: Create the Event
-                eventClass = getattr(sys.modules["gamefield_schema_layer"], eventType.value)
+        for commandName, eventName in COMMAND_EVENT_MAPPER.items():
+            if (commandName == command.commandName):
+                # Create the Event
+                eventClass = getattr(sys.modules["gamefield_schema_layer"], eventName)
                 newEvent = eventClass.create_from_command(command)
+                print (">>>>>>>>>>")
                 print (newEvent)
+                print ("<<<<<<<<<<")
                 #TODO: Persist the Event
                 #TODO: Publish the Event to a SQS Topic 
-        
-        pass
     else:
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>> NOT EverythingApproved")
         #TODO: Use the 'unsatisfiedPolicies' objet to build an error report

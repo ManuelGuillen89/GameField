@@ -1,3 +1,4 @@
+from sys import version
 from pydantic import BaseModel
 from typing import Optional
 from enum import Enum
@@ -62,7 +63,7 @@ class Event(BaseModel):
 
 class AggregateEventInfo(BaseModel):
     id: str
-    seqNumber: int
+    version: int
 
 class GameFieldCreated(Event):
     eventName: EnabledEvent = EnabledEvent.GameFieldCreated
