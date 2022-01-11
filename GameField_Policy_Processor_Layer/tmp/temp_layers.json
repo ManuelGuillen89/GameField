@@ -3,12 +3,12 @@
     "Arn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Common_Python:2"
   },
   {
-    "Arn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Schema_Python:10"
+    "Arn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Policy_Processor_Python:2"
   },
   {
-    "Arn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Policy_Python:15"
+    "Arn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Policy_Python:17"
   },
   {
-    "Arn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Policy_Processor_Python:1"
+    "Arn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Schema_Python:11"
   }
 ]

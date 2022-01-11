@@ -1,17 +1,15 @@
 from pydantic import BaseModel
 from typing import Optional
 from enum import Enum
+import uuid
 
 ##################### COMMON ENUMS AND TYPES ############################
+COMMAND_EVENT_MAPPER = {
+    "CreateGameField": "GameFieldCreated"
+}
+
 class EnabledCommand(str, Enum):
     CreateGameField = "CreateGameField"
-
-class EnabledEvent(str, Enum):
-    GameFieldCreated = "GameFieldCreated"
-    GameFieldNameChanged = "GameFieldNameChanged"
-    GameFieldMinMaxPlayersChanged = "GameFieldMinMaxPlayersChanged"
-    GameFieldTypeChanged = "GameFieldTypeChanged"
-    GameFieldStatusChanged = "GameFieldStatusChanged"
  
 class GameFieldStatus(str, Enum):
     DISABLED = "DISABLED"
@@ -52,20 +50,35 @@ class CreateGameField(Command):
 
 ############################### EVENTS ##################################
 class Event(BaseModel): 
-    pass 
+    def create_from_command(command: Command):
+        #TODO: Implement
+        pass 
 
 class AggregateEventInfo(BaseModel):
     id: str
     seqNumber: int
 
 class GameFieldCreated(Event):
-    eventName: EnabledEvent = EnabledEvent.GameFieldCreated
+    eventName: EnabledEventMapper = EnabledEventMapper.GameFieldCreated
     fieldName: str
     fieldType: GameFieldType
     minPlayers: int
     maxPlayers: int
     status: GameFieldStatus
     aggregateEventInfo: AggregateEventInfo
+    def create_from_command(command: CreateGameField):
+        aggregateEventInfo = AggregateEventInfo(**{
+            "id": str(uuid.uuid4()),
+            "version": 1
+        })
+        return GameFieldCreated(**{
+            "fieldName": command.fieldName,
+            "fieldType": command.fieldType,
+            "minPlayers": command.minPlayers,
+            "maxPlayers": command.maxPlayers,
+            "status": command.status,
+            "aggregateEventInfo": aggregateEventInfo
+        })
 
 
 ######################### COMMON UTILITY FUNCTIONS ############################
