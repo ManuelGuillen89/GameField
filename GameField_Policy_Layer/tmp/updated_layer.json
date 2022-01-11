@@ -1,14 +1,14 @@
 {
     "Content": {
-        "Location": "https://awslambda-sa-east-1-layers.s3.sa-east-1.amazonaws.com/snapshots/176780489193/GameField_Policy_Python-1abfcaf2-1b3d-451d-bdd1-f4e235143971?versionId=HENwFPULJTqo0UXUaCremZOBEZ4m0Xyv&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBcaCXNhLWVhc3QtMSJHMEUCIQC9RLEyDW866E10GS3On205LfgfKq%2BrqW%2FZCxAEbt8sbwIgIjaTopI9i3yioco1qW60hRrTWfTbZ6X3crdWkHOJAToq%2BgMIMBADGgwyMzIyMTYxNzU2OTQiDEjgTXo5BL6teyoRoSrXAwohv5ogHQKb%2FYtOQ2urEiBkMN3BnrVK0oseQKLF6yfdebQVFwQEfanE8qqnbw5nqEdXnMMjok5P3lkv7Ce3AHi9vhs0sZkTFGgyviPwg%2FbqYXdzwrEe0zVEpStfGsIaLNQ%2B06j2ZrNKhdUeXMO0aUcMlduwQaf0U4gAIA86V8%2ByU0BjgTb0d135kQZ0dYeKPssmA2Zuzafo84NR7KYBIPQ5yq2P5bUAWgScUVgR9DCnv9g%2BRCA8L%2B1XDeQDCSA1RRNe5pdfVVxFJoUR5HdM%2B%2B3bAlD4wf%2Bqm6zcoWxbWtV%2FLWbqf3ZndJobPwGSDtO5JpJwbJvKPBa5dviirWS33RnBbOQ9tpL3sR1Y98DCvgLARBJU28UP6vjapb3YSjzhWQo7IH7paXM3tr4lEnlveW8ZzGfuDzaoUlKlsHKQynhQqeZsArsGGsxm%2BXOhD7g3%2F5tqIVaxybbWQj0QxYbT8E%2FIJ8drogcSRSAQoUtaHCGjWnHwXSdyOc0D12VAJ8Kan%2FcKi%2FoiHCyBxC6BXBFihTkq9YihLZ%2BqCaB1QsG4gglOo9pwFTgYWoDOay8bkF9KB0rPxx45tFj2%2FjoyYqOJC0JluHcENScMPGahvVm8F%2Fm9qLiJescjfjDTufaOBjqlAfDoj4maTVGfgHvkbScijfHLSZGIkQrf6ssApxO%2B8kMjdsk9sEPCkWJDz4Tf5yOJON%2FDwFGDU91z0V%2BraF7cV4RnrIsfxnfQfHMwfINMzj%2FHybA4gtyKSElEA4uLla5Av5yVTXy3e%2FnvYI8aIsvCnSKYObyOgEMx1hacDik6H5hFXRD%2BwemGTCiQ3orVTqBCDz4ZOL1Sevhh0uS8r4%2BaYRfk5Y4%2Fjw%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220111T162154Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Credential=ASIATMEJJURHDRVPRAGC%2F20220111%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Signature=7679eac3b9188bd889cf65b43bca0e7afa78df8702cc927a784712a23cd4524e",
-        "CodeSha256": "GhiRCfnz6MWQZlXNsJKqVRz4VDJXq23HmxTVr9Njn/Y=",
-        "CodeSize": 1396
+        "Location": "https://awslambda-sa-east-1-layers.s3.sa-east-1.amazonaws.com/snapshots/176780489193/GameField_Policy_Python-0347d7a5-c7b5-4556-adb6-2eb46ec81abd?versionId=1HbU5AmqS5e2queI25nOF6G4_Dga8dUR&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBwaCXNhLWVhc3QtMSJIMEYCIQCUxPJWxgOdlLu4nsjjuauQegiB9m%2BgnGcmeVJUakS%2B7gIhAJVAsFxhK7IcTDfbPKQXqZ%2FpgRZCvAGfZ%2BQldCa%2FFF5zKvoDCDQQAxoMMjMyMjE2MTc1Njk0Igx%2FDeqH5X5UxUL%2BvWkq1wMqwNg0HwpKmtLWF4GddF32UgBsjobqRGmuSL7e4spHLyxF6AMyFzgzBe0kCr0K90QIY%2Boz3oZxSrDIhKj4swq8YNC6uR9o%2BjLGRTIhIrCwSUV%2BjMXzfIfhYX9tYLLsJm%2FIvy%2B%2BTY1fUcZgZtsZytK7HWkI506SreoRShrBDtnNOisE21eOIg9Ju%2BgHvN4zTdCgx3cJAljH0gLtrSO4j1DXeCYcaE44ro1jYbSL6aB5S3VKhG0tFCPYiCy4JhoTxMDibRsffIasd7kxwezoQRjGJ1E13Uq2pERdKcWqQa%2B0LA8O9kWGAgwLMiLP9gYxzabxR6vI1nctH568CW%2FaODkxk4nHvJjqeIjKeHW0JcArvkXorFGvrPdr7kgqI5fn2hOusp7JtekUdAEVEfzu9RLYyfYHxp8rA767zCYsOtI8qF3qLK0%2FydD%2FoZ%2FzUc2aF%2BAt9Vh2DpZcVPbRcanjpk5pLCzY1%2FlNk%2B%2FNTYVeO%2FZKWhJGRUUUuhVYYQDrcRBU0q1nVZ6UpjDsO%2ByTDmwtpl79BPkJCUcbqvXSVEjIZ6z4vDPtCXeLGv2YMQwngN5cvJZ5D6huPEBYbdO3AUvNsMbFACt7u8aoZa08fnG9wQoT3%2F4T4vVe1zgw0a%2F3jgY6pAGdqb%2BVzT7%2FvZsdDw74hvRffmbra7Tik%2FiTWdJGVunUhWugAkXt%2BKz8T9JiTGAgXAVagGlEcSqCRCilNbyCUQI3N6v2FTQOR0OtPLEVMhOk%2BKr1aE6m6di90qnml3badUe1i%2BqgqYDWWkY0mhShJg%2FyxkMlovNmQA6QLwFCWwv52QAT%2F67%2BysVaaSK32XBlMciWOR%2B5ieo2Ews5gAjRNJFAPy569w%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220111T202433Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Credential=ASIATMEJJURHHCI32XNV%2F20220111%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3294042bf4657144e07688cbb5e2e1dab88d13a0a8948da12f6847a6204c55be",
+        "CodeSha256": "qnyrJ0/G5ylRgwAHzb1KOx/5eO7PdbiWcdUpqDILmQI=",
+        "CodeSize": 915
     },
     "LayerArn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Policy_Python",
-    "LayerVersionArn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Policy_Python:10",
+    "LayerVersionArn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Policy_Python:16",
     "Description": "Policy layer for GameField aggregate",
-    "CreatedDate": "2022-01-11T16:21:57.297+0000",
-    "Version": 10,
+    "CreatedDate": "2022-01-11T20:24:36.812+0000",
+    "Version": 16,
     "CompatibleRuntimes": [
         "python3.9"
     ],

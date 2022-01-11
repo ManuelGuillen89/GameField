@@ -1,0 +1,16 @@
+{
+    "Content": {
+        "Location": "https://awslambda-sa-east-1-layers.s3.sa-east-1.amazonaws.com/snapshots/176780489193/GameField_Policy_Processor_Python-7d7b2ce9-516b-4413-a23b-1332e712f395?versionId=rXij5n48fBcEzI5i00GEJ92H_PcwhFT_&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBwaCXNhLWVhc3QtMSJHMEUCIQCA%2FDr6qaeq8ohRoyY2sINOw0sYIsYGysyqzgtFigx5iAIgF6z7P5uqaDUXRJ1U7nt0S9nfZWa%2FJhrYvJMMjerD1m0q%2BgMINBADGgwyMzIyMTYxNzU2OTQiDAHTX7yQqiSWmXy3zSrXA5j33KHlHhU7Qk2e%2FDjQ2NVhzW4%2Fmn%2Fbg9qDtKW1ULqrd5fILzbek8lnYOtsdk9xIHd7s7SiBx%2FKMAckiILzXyml4ZMmjs3OOZPg6%2FXytb7comKbjfjEWtn4z3NN8GO5PdResRSH%2FwzYNsNJMY8ieAnCmUsIOadqrX%2FU1ER%2BlmpniRGCzmEoR%2FOEKS7s0u2TCFk1EPCgSH%2FMK9vWzftHlBerOF8R7ikxRolPfez5nVSwoFbsEmE7oVGc8o6zOjFcSXSlZ7lLV53Md%2BTi7sLhXzBK0DrlNcC59Ac6e5VXGJbSgZDakn%2Bm3t5FDs3vq0Kz74EGpYUbw413yAY7WkXho6cVB32lYPPCJ6nt8ZfAabxT1johl6aP8fH3F8yQ4zGXcYlP7Vd8NXk0Y41OAVRWyyZlqTLRmWzqqi9WvsbJ87c%2FMrQgXTkDsEWAyLqwp293t84Ejr5DkuV64v1CkUb09hIEl9i637UJIAxzsmJiIJquchrwGs8JzorCV5DbNrp5eMQ94Q5IehrC9hlCCj1AMLW%2Bg3g1f%2FtFGhjXqtlhK7x85lPhbyEzgBgEv16h6eJfQSQlaAX7bU10LunF7371UMbntOFzw5uJi5siNpvyqQafuJVoNJ2%2BqjDVr%2FeOBjqlAe4hnHxHrGqpZjgWjhvtVxCHmRGRHZIbm3JTNvNmstROr5%2BxEknJHWzn4Qae%2FXMOS8ENmevgQ6H5TB3eFG4PGQ4nq1sBFgnXlHtoluxHUsbFUPeDv3lVbfpBQYjFk%2BMvHfa%2FasOac0GihEqQJzTBOSRKltkbpjvREnvMFL8%2Fuk%2FNoKLa7JcT%2FuXREn63JyPb2it6fhAu0Vu%2FJYFEU0bU7JQhDLlBSg%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220111T202405Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Credential=ASIATMEJJURHPETHPS6E%2F20220111%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Signature=d121c77cc4550a1ed14e1327ccf330c74e456bf9925e9cc7bcde031e2946a1f0",
+        "CodeSha256": "WcJowMPXW1YEHEnD7IK/opf7eOc64b3jZExc25wvuRI=",
+        "CodeSize": 1118
+    },
+    "LayerArn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Policy_Processor_Python",
+    "LayerVersionArn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Policy_Processor_Python:2",
+    "Description": "Policy Processor layer for GameField aggregate",
+    "CreatedDate": "2022-01-11T20:24:08.798+0000",
+    "Version": 2,
+    "CompatibleRuntimes": [
+        "python3.9"
+    ],
+    "LicenseInfo": "MIT"
+}
