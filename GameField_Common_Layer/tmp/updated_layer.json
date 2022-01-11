@@ -1,0 +1,16 @@
+{
+    "Content": {
+        "Location": "https://awslambda-sa-east-1-layers.s3.sa-east-1.amazonaws.com/snapshots/176780489193/GameField_Common_Python-642e1a99-6933-4185-936a-c8fa707203ea?versionId=iU.vcMZxfHLV1fYZqePlq.PQC5SisXdU&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBYaCXNhLWVhc3QtMSJHMEUCIQDV25HSEzWHCgdg%2BO4B%2Bpap6r5g6ROYlRfHowGwOmKIggIgGi4epStYaQspxRiwuOnlB26qmwgBSbvdWTS%2BHaZ%2Fplcq%2BgMILhADGgwyMzIyMTYxNzU2OTQiDDPPGkPz7%2B0cFvFO8CrXA2zRfDcL1G9B4N1Rreuud3qJi%2FCY3dv2sTp%2FFgsugbykbkGnnp8VqnftBOeZ5QBjP8w6s3jrEeh%2FCZziQUZ0wYkTmtP08WP7CWjYq1xrJVqkw1DzWT8tRkdF5tsPtnYMsf8IvqfQrsRRAIQLmax4akaSE25mfMM69gXfoSWlHOriHMgJ6QtvC64lDDkCb0x57R0PwbP5%2Fa9R02N2mrXwIjxz5%2BNW5X7K5Ufd6ibIY3FzKh18CD8DkhT8hEEh739yaJlTcsFPmvWwv1BdtK7QGDpAfElDTRyqNzDYxr5vaI%2Fm7Jyj1yJCjU57DepW8Q5ihhMM4SZcEFi9HFtjrTyXDwlpp1iDrwZ8DIKyJ%2B6y13RWicy08p%2FmlvoTqKgFgCP43JW6kL6NXyx259GNVPdpNlebyRhFBtgvwj7zpdzqv4ZlUkQTP%2F5nSdsV4DEhevgUcN%2FnxAx4ZkVjjMcEVgjVfzNwXhWZ6BYbIN9HbPRyNXTqVTZwlFqIxn8%2BtbZBbyARlTYusVjxw2gdjxm2X8OVow5aBMXPW9dEIr5zJc1h9Ij8vSGOIGBEOnTORut6udNZfjqJSB3NwFwLq%2BrTpGGKAb%2FlW7xSHYAn3hwj7%2ByG2XY3o%2FCkrZRcFTCmjPaOBjqlAdXARxfRCHgfuh64FLrGSIZY82Q84LtDnyHclebIhJ49q75BQbzgbopa5jFuXV6NrQ5qyrKurgMxv9XwDvTDub77xJ%2BuJI2WvZ3Wcs%2FzjG8ZbbafE1gVSvH3e6LDjfeyuFmW7qPiRFHbxP6FJJkgnQqd9SUO2Y51DqaIAO457G2ntvVHUPempKxakO7LbSxaIQlWmcMpxKvPxbLRxjRRHA6vOQzTYw%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220111T135515Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Credential=ASIATMEJJURHK6PC3HX3%2F20220111%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Signature=168e0caba7a1613105ba75f50b9e77cb726279f08102791a536543ac81b84b3e",
+        "CodeSha256": "k7/T9AVOuOF7DfjrYQGaDprEEYRs0qobInjc+2lMNKg=",
+        "CodeSize": 2151903
+    },
+    "LayerArn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Common_Python",
+    "LayerVersionArn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Common_Python:2",
+    "Description": "Common Libraries Layer for GameField aggregate",
+    "CreatedDate": "2022-01-11T13:55:19.186+0000",
+    "Version": 2,
+    "CompatibleRuntimes": [
+        "python3.9"
+    ],
+    "LicenseInfo": "MIT"
+}

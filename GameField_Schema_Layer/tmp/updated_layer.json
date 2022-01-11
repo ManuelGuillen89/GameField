@@ -1,0 +1,16 @@
+{
+    "Content": {
+        "Location": "https://awslambda-sa-east-1-layers.s3.sa-east-1.amazonaws.com/snapshots/176780489193/GameField_Schema_Python-da1c267b-01c1-447a-92e8-22ad810cab17?versionId=VIg97iTbQ32_jOhk.VANzfX1IxlyCsLy&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBUaCXNhLWVhc3QtMSJHMEUCIBctRvo9pW4Oj%2Bg5e3j3xqMdG%2B%2FRPZZNfMyEcCH4XZsiAiEA2TvAyP54GKvWMPvqQ3l7SMrr9gPpaiBjLcACZarNQKcq%2BgMILhADGgwyMzIyMTYxNzU2OTQiDGXoWacfkBsJzO2tdirXAzBPa88%2BfEgyMwVXo9MqcbT2vw2OTHjlGWhB9JeXoY36scOl3jt7AcarZ33Ewj20LcchtT8QnC8ZdvqMWCkr%2BhuAPU8RM4vttpH43Q8cj8Yg%2FGwOjqq3COT4GOmYzcOk0%2F7KAZFtgsVUlbyl4%2FVDAJIrNshkqXiPBlHLVukRP1rbthm5aGZ3QFua0upHyT%2BgZtvGJrg8M1qIgsgjn%2Fx4Ud8VWjLEfO6xT7ehM8Ow4gKCilXTe5JontsW46rn44A%2BcwC6%2Fp7qtrJd2qwFo7c%2BZKcf71q%2BMUAVLIYfrf5fGyaBmXjXS%2FO%2F0OnbN7JM5DVCUGuufLX0pmPlK51el%2Bg%2Fg4CW9OJweMgjBCFcoWROq6uOdLaAiQfrGRPcCqB9GBoNAvVUj%2FdmUfDi2Z6bDMNXNB9G17USqFbipUg68AjJWrCLEtdWchIlyFq8vAABmJUbb%2Bc%2BYI9ZmFiUf%2FPm%2FEmzkxqPf4TdGvWtNY8ZI8RwagE4r3Hx%2Fvsb419Gml8DeT39XYSGOqQga3pVy03NEDmUp7tDy8W6hz4dfz%2Fcg6jeqn3MfUXH9kObabPBBqrJ4bY3IJZojYnzmvRfW9hObCcJwh1oE8Z%2BJyYPMQKobP%2BKdMrU3sGlhBi5dTDM%2B%2FWOBjqlAd7gQhNd1pLmk7%2FdS1F6TSgskC5Y5OFVh8OUq1Eu4ZM2IvYwy8HX%2BU341DkZD3YDlU1uPyzR%2BY%2Fi5l8sP7NOzK850YJpGc7KvZNsNkC0VbNEYjty2E9DjZhrDAQHXmBEzh6GXXOuC9MMkpJw9M6%2FqPVTStKbo5xtc7Qd75BZpSALaMogl4CCZyTlbJynMEMl5jOQmVd9Z1lMsQ7N2EJVWuT%2B%2BPwZcg%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220111T142041Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Credential=ASIATMEJJURHHVUC3E4B%2F20220111%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Signature=edbb04b1e037bc81a4ceb12dbcd2d185381c33f0734fa06f9c3db8698b22bce3",
+        "CodeSha256": "N4wGC+231eZpud5PTHRW0Sp7Mer3pM4K4USw33q3IIQ=",
+        "CodeSize": 1029
+    },
+    "LayerArn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Schema_Python",
+    "LayerVersionArn": "arn:aws:lambda:sa-east-1:176780489193:layer:GameField_Schema_Python:10",
+    "Description": "Schema layer for GameField aggregate",
+    "CreatedDate": "2022-01-11T14:20:42.507+0000",
+    "Version": 10,
+    "CompatibleRuntimes": [
+        "python3.9"
+    ],
+    "LicenseInfo": "MIT"
+}
