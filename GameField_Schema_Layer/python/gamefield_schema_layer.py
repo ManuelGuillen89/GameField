@@ -59,6 +59,9 @@ class Event(BaseModel):
     def create_from_command(command: Command):
         #TODO: Implement
         pass 
+    def persist_in_eventstore_applying_constraints(command: Command):
+        #TODO: Implement
+        pass 
 
 class GameFieldCreated(Event):
     id: str 
@@ -79,8 +82,9 @@ class GameFieldCreated(Event):
             "maxPlayers": command.maxPlayers,
             "status": command.status
         })
-        return json.loads(newEvent.json())
-
+        newEventAsDict = json.loads(newEvent.json())
+        return newEventAsDict
+                
 
 ######################### COMMON UTILITY FUNCTIONS ############################
 def get_command_payload_if_exist(event) -> Optional[dict]:

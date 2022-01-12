@@ -59,6 +59,9 @@ class Event(BaseModel):
     def create_from_command(command: Command):
         #TODO: Implement
         pass 
+    def persist_in_eventstore_applying_constraints(command: Command):
+        #TODO: Implement
+        pass 
 
 class GameFieldCreated(Event):
     id: str 
@@ -70,7 +73,7 @@ class GameFieldCreated(Event):
     maxPlayers: int
     status: GameFieldStatus
     def create_as_dict_from_command(command: CreateGameField):
-        return GameFieldCreated(**{
+        newEvent = GameFieldCreated(**{
             "id": command.id,
             "version": 1,
             "fieldName": command.fieldName,
@@ -79,15 +82,8 @@ class GameFieldCreated(Event):
             "maxPlayers": command.maxPlayers,
             "status": command.status
         })
-    def persist_in_eventstore_applying_constraints(eventStoreTable, selfAsDict):
-        # Persist the Event
-                try:
-                    eventStoreTable.put_item(
-                        Item=selfAsDict, 
-                        ConditionExpression="attribute_not_exists(id)"
-                    )
-                except Exception:
-                    raise                   
+        newEventAsDict = json.loads(newEvent.json())
+        return newEventAsDict
                 
 
 ######################### COMMON UTILITY FUNCTIONS ############################

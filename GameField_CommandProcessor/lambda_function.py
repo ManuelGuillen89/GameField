@@ -39,7 +39,7 @@ def process_validated_command(command: Command):
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>> EverythingApproved")
         # Get the service resource.
         dynamodb = boto3.resource("dynamodb")
-        eventStore = dynamodb.Table("GameField_EventStrore")
+        eventStoreTable = dynamodb.Table("GameField_EventStrore")
         for commandName, eventName in COMMAND_EVENT_MAPPER.items():
             if commandName == command.commandName:
                 # Create the Event
@@ -47,13 +47,11 @@ def process_validated_command(command: Command):
                 newEventAsDict = eventClass.create_as_dict_from_command(command)
                 # Persist the Event
                 try:
-                    eventStore.put_item(
-                        Item=newEventAsDict, 
-                        ConditionExpression="attribute_not_exists(id)"
-                    )
+                    eventStoreTable.put_item(Item=newEventAsDict)
                 except Exception as e:
+                    # TODO: Derivar error a sistema de notificacion de errores
                     print(e)                   
-              
+                
                 print(" Stored ! <<<<<<<<<<")
                 # TODO: Publish the Event to a SQS Topic
                 break
