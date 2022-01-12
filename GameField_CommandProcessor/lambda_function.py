@@ -1,6 +1,8 @@
 import json, sys
+from warnings import catch_warnings
 from gamefield_policy_processor_layer import *
 import boto3
+
 
 
 def lambda_handler(event, context):
@@ -43,9 +45,12 @@ def process_validated_command(command: Command):
                 # Create the Event
                 eventClass = getattr(sys.modules["gamefield_schema_layer"], eventName)
                 newEventAsDict = eventClass.create_as_dict_from_command(command)
-                print(newEventAsDict)
-                # TODO: Persist the Event
-                eventStore.put_item(Item=newEventAsDict)
+                # Persist the Event
+                try:
+                    eventStore.put_item(Item=newEventAsDict, ConditionExpression="attribute_not_exists(id)")
+                except Exception as e:
+                    print(e)                   
+              
                 print(" Stored ! <<<<<<<<<<")
                 # TODO: Publish the Event to a SQS Topic
                 break
