@@ -1,8 +1,7 @@
-from sys import version
 from pydantic import BaseModel
 from typing import Optional
 from enum import Enum
-import uuid
+import json
 
 ##################### COMMON ENUMS AND TYPES ############################
 
@@ -61,31 +60,26 @@ class Event(BaseModel):
         #TODO: Implement
         pass 
 
-class AggregateEventInfo(BaseModel):
-    id: str
-    version: int
-
 class GameFieldCreated(Event):
+    id: str 
+    version: int 
     eventName: EnabledEvent = EnabledEvent.GameFieldCreated
     fieldName: str
     fieldType: GameFieldType
     minPlayers: int
     maxPlayers: int
     status: GameFieldStatus
-    aggregateEventInfo: AggregateEventInfo
-    def create_from_command(command: CreateGameField):
-        aggregateEventInfo = AggregateEventInfo(**{
-            "id": str(uuid.uuid4()),
-            "version": 1
-        })
-        return GameFieldCreated(**{
+    def create_as_dict_from_command(command: CreateGameField):
+        newEvent = GameFieldCreated(**{
+            "id": command.id,
+            "version": 1,
             "fieldName": command.fieldName,
             "fieldType": command.fieldType,
             "minPlayers": command.minPlayers,
             "maxPlayers": command.maxPlayers,
-            "status": command.status,
-            "aggregateEventInfo": aggregateEventInfo
+            "status": command.status
         })
+        return json.loads(newEvent.json())
 
 
 ######################### COMMON UTILITY FUNCTIONS ############################
