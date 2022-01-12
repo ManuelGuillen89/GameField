@@ -53,7 +53,7 @@ def process_validated_command(command: Command):
                     print(e)                   
                 
                 print(" Stored ! <<<<<<<<<<")
-                # TODO: Publish the Event to a SQS Topic
+                # TODO: Publish the Event to a SNS Topic
                 break
     else:
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>> NOT EverythingApproved")
