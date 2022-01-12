@@ -47,7 +47,10 @@ def process_validated_command(command: Command):
                 newEventAsDict = eventClass.create_as_dict_from_command(command)
                 # Persist the Event
                 try:
-                    eventStore.put_item(Item=newEventAsDict, ConditionExpression="attribute_not_exists(id)")
+                    eventStore.put_item(
+                        Item=newEventAsDict, 
+                        ConditionExpression="attribute_not_exists(id)"
+                    )
                 except Exception as e:
                     print(e)                   
               

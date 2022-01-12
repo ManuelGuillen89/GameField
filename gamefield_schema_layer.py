@@ -70,7 +70,7 @@ class GameFieldCreated(Event):
     maxPlayers: int
     status: GameFieldStatus
     def create_as_dict_from_command(command: CreateGameField):
-        newEvent = GameFieldCreated(**{
+        return GameFieldCreated(**{
             "id": command.id,
             "version": 1,
             "fieldName": command.fieldName,
@@ -79,8 +79,16 @@ class GameFieldCreated(Event):
             "maxPlayers": command.maxPlayers,
             "status": command.status
         })
-        return json.loads(newEvent.json())
-
+    def persist_in_eventstore_applying_constraints(eventStoreTable, selfAsDict):
+        # Persist the Event
+                try:
+                    eventStoreTable.put_item(
+                        Item=selfAsDict, 
+                        ConditionExpression="attribute_not_exists(id)"
+                    )
+                except Exception:
+                    raise                   
+                
 
 ######################### COMMON UTILITY FUNCTIONS ############################
 def get_command_payload_if_exist(event) -> Optional[dict]:
