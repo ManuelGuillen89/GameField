@@ -1,16 +1,16 @@
 layerName="GameField_Schema_Python"
 layerDescription="Schema layer for GameField aggregate"
 fileName="gamefield_schema_layer"
-updatedLayerFile="./tmp/updated_layer.json"
+updatedLayerFile="./tmp/updated_layer.json" 
 tempLayersFile="./tmp/temp_layers.json"
 
-echo "STARTED!" && 
-echo "Generatin layer zip file" &&
-cp ../${fileName}.py ./python && 
-zip -r ${fileName}.zip ./python && 
-echo "Pushing layer to AWS" &&
-aws lambda publish-layer-version --layer-name ${layerName} --description "$layerDescription" --license-info "MIT" --zip-file fileb://${fileName}.zip --compatible-runtimes python3.9 > $updatedLayerFile && 
-echo "Layer Pushed to AWS" && 
+# echo "STARTED!" && 
+# echo "Generatin layer zip file" && 
+# cp ../${fileName}.py ./python && 
+# zip -r ${fileName}.zip ./python && 
+# echo "Pushing layer to AWS" &&
+# aws lambda publish-layer-version --layer-name ${layerName} --description "$layerDescription" --license-info "MIT" --zip-file fileb://${fileName}.zip --compatible-runtimes python3.9 > $updatedLayerFile && 
+# echo "Layer Pushed to AWS" && 
 
 # PUT EVERY CONSUMER HERE 
 for i in "GameField_CommandProcessor" "GameField_CommandValidator" "GameField_EventHandler_StateProjector" 

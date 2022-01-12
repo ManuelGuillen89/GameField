@@ -44,7 +44,8 @@ def process_validated_command(command: Command):
             if commandName == command.commandName:
                 # Create the Event
                 eventClass = getattr(sys.modules["gamefield_schema_layer"], eventName)
-                newEventAsDict = eventClass.create_as_dict_from_command(command)
+                newEvent = eventClass.create_from_command(command)
+                newEventAsDict = json.loads(newEvent.json())
                 # Persist the Event
                 try:
                     eventStoreTable.put_item(Item=newEventAsDict)
@@ -61,3 +62,8 @@ def process_validated_command(command: Command):
         # TODO: publish the error to an error handler
         pass
     print(">>>>>>>>>> {} <<<<<<<<<<<".format("END OK: process_validated_command"))
+
+
+
+
+

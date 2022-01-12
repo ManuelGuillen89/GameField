@@ -1,3 +1,4 @@
+from typing_extensions import Self
 from pydantic import BaseModel
 from typing import Optional
 from enum import Enum
@@ -14,7 +15,7 @@ class EnabledEvent(str, Enum):
 
 
 COMMAND_EVENT_MAPPER = {
-    EnabledCommand.CreateGameField.value: EnabledEvent.GameFieldCreated.value
+    EnabledCommand.CreateGameField: EnabledEvent.GameFieldCreated
 }
 
 class GameFieldStatus(str, Enum):
@@ -59,9 +60,6 @@ class Event(BaseModel):
     def create_from_command(command: Command):
         #TODO: Implement
         pass 
-    def persist_in_eventstore_applying_constraints(command: Command):
-        #TODO: Implement
-        pass 
 
 class GameFieldCreated(Event):
     id: str 
@@ -72,7 +70,7 @@ class GameFieldCreated(Event):
     minPlayers: int
     maxPlayers: int
     status: GameFieldStatus
-    def create_as_dict_from_command(command: CreateGameField):
+    def create_from_command(command: CreateGameField) -> Self:
         newEvent = GameFieldCreated(**{
             "id": command.id,
             "version": 1,
@@ -82,9 +80,7 @@ class GameFieldCreated(Event):
             "maxPlayers": command.maxPlayers,
             "status": command.status
         })
-        newEventAsDict = json.loads(newEvent.json())
-        return newEventAsDict
-                
+        return newEvent           
 
 ######################### COMMON UTILITY FUNCTIONS ############################
 def get_command_payload_if_exist(event) -> Optional[dict]:
