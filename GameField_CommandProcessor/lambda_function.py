@@ -2,7 +2,6 @@ import json, sys
 from warnings import catch_warnings
 from gamefield_policy_processor_layer import *
 import itertools
-
 import boto3
 
 
@@ -21,14 +20,13 @@ def lambda_handler(event, context):
     return {}
 
 
-def parse_validated_command(payload) -> Optional[Command]:
+def parse_validated_command(payload: dict) -> Optional[Command]:
     cmdName = payload["commandName"]
-    listOfCommands = list(EnabledCommand)
     match = itertools.takewhile(lambda cName: cmdName == cName, list(EnabledCommand))
     if not match:
         return None 
     else:
-        commandClass = getattr(sys.modules[__name__], name)
+        commandClass = getattr(sys.modules[__name__], match[0])
         return commandClass(**payload)
             
 
@@ -43,6 +41,8 @@ def process_validated_command(command: Command):
         # Get the service resource.
         dynamodb = boto3.resource("dynamodb")
         eventStoreTable = dynamodb.Table("GameField_EventStrore")
+        
+        # Remember: One command can generate more than one event at same time
         for commandName, eventName in COMMAND_EVENT_MAPPER.items():
             if commandName == command.commandName:
                 # Create the Event
@@ -58,7 +58,7 @@ def process_validated_command(command: Command):
                 
                 print(" Stored ! <<<<<<<<<<")
                 # TODO: Publish the Event to a SNS Topic
-                break
+                
     else:
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>> NOT EverythingApproved")
         # TODO: Use the 'unsatisfiedPolicies' objet to build an error report
