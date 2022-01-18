@@ -1,6 +1,8 @@
 import json, sys
 from warnings import catch_warnings
 from gamefield_policy_processor_layer import *
+import itertools
+
 import boto3
 
 
@@ -14,7 +16,6 @@ def lambda_handler(event, context):
         if parsedCommand == None:
             print(">>>>>>>>>>>>>>>>>>> COMMAND NOT PARSED, EXITING.-")
             # TODO: rise and publish error
-            return {}
         else:
             process_validated_command(parsedCommand)
     return {}
@@ -23,11 +24,13 @@ def lambda_handler(event, context):
 def parse_validated_command(payload) -> Optional[Command]:
     cmdName = payload["commandName"]
     listOfCommands = list(EnabledCommand)
-    for name in listOfCommands:
-        if name == cmdName:
-            commandClass = getattr(sys.modules[__name__], name)
-            return commandClass(**payload)
-    return None
+    match = itertools.takewhile(lambda cName: cmdName == cName, list(EnabledCommand))
+    if not match:
+        return None 
+    else:
+        commandClass = getattr(sys.modules[__name__], name)
+        return commandClass(**payload)
+            
 
 def process_validated_command(command: Command):
     # validate business rules here
