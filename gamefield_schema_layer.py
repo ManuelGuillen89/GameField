@@ -2,7 +2,6 @@ from typing_extensions import Self
 from pydantic import BaseModel
 from typing import Optional
 from enum import Enum
-import json
 
 ##################### COMMON ENUMS AND TYPES ############################
 
@@ -60,7 +59,7 @@ class Event(BaseModel):
     def create_from_command(command: Command):
         #TODO: Implement
         pass 
-
+ 
 class GameFieldCreated(Event):
     id: str 
     version: int 
