@@ -29,12 +29,12 @@ class PolicyProcessor:
                 command,
                 appliedPolicies,
             )
+        
+        #the dumbest man improvement .... 
         isEverythingApproved = all(list(map(lambda x: x.isSatisfied, appliedPolices)))
-        if isEverythingApproved:
-            return True, None
-        else:
-            unsatisfiedPolicies = list(map(lambda x: x.policyError, appliedPolices))
-            return False, unsatisfiedPolicies
+        unsatisfiedPolicies = list(map(lambda x: x.policyError, appliedPolices))
+        return isEverythingApproved, unsatisfiedPolicies
+
 
     def apply_policies_by_command_type(
         command: Command,
